@@ -5,7 +5,7 @@ import numpy as np
 
 # Assuming you have a trained model
 
-with open(gradient_boosting_model.pkl, 'rb') as file:
+with open(https://github.com/harthej/Solar_power_generation_forecasting/blob/67cdca0a2f102f5db313f1a1f90ab4bba23783f6/gradient_boosting_model.pkl, 'rb') as file:
     model = pickle.load(file)
 
 # Streamlit app
