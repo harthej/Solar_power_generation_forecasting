@@ -63,27 +63,8 @@ def user_input_features():
 input_data = user_input_features()
 
 # Prediction
-@st.cache_resource
-def load_model():
-    url = "https://raw.githubusercontent.com/harthej/Solar_power_generation_forecasting/main/gradient_boosting_model.pkl"
-    response = requests.get(url)
-
-    if response.status_code != 200:
-        st.error(f"Failed to download the file. Status code: {response.status_code}")
-        return None  # Return None if the request failed
-
-    try:
-        file = io.BytesIO(response.content)
-        model = pickle.load(file)
-        return model
-    except Exception as e:
-        st.error(f"Error loading model: {e}")
-        return None
-
-# Load the model
-model = load_model()
-
-if model is None:
-    st.error("Model could not be loaded. Please check the source URL or file format.")
+if st.button("Predict Power Generated"):
+    prediction = model.predict(input_data)
+    st.success(f"Predicted Power Generated: {prediction[0]:.2f} kW")
 
 st.write("Adjust the input values in the sidebar to see the predictions.")
