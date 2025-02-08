@@ -64,7 +64,8 @@ input_data = user_input_features()
 
 # Prediction
 if st.button("Predict Power Generated"):
-    prediction = model.predict(input_data)
+    st.write(f"Input data shape: {input_data.shape}")
+
     st.success(f"Predicted Power Generated: {prediction[0]:.2f} kW")
 
 st.write("Adjust the input values in the sidebar to see the predictions.")
