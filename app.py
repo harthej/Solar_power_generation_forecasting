@@ -2,10 +2,10 @@ import streamlit as st
 import pickle
 import numpy as np
 
-# Load the trained model
-with open("gradient_boosting_model.pkl", 'rb') as file:
-    model = pickle.load(file)
 
+# Assuming you have a trained model
+with open("gradient_boosting_model.pkl", "wb") as file:
+    pickle.dump(model, file)
 
 # Streamlit app
 st.title("Solar Power Prediction App")
