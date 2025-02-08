@@ -4,6 +4,11 @@ import pickle
 import numpy as np
 import pandas as pd
 import sklearn as sk
+import sklearn as sk.model_selection
+
+# Using the alias to access a module
+from sk.model_selection import train_test_split
+
 
 from PIL import Image 
 
