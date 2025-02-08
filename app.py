@@ -63,8 +63,9 @@ def user_input_features():
 input_data = user_input_features()
 
 # Prediction
-if model is None:
-    st.error("Model is not loaded. Check if the model is being loaded correctly.")
+
+input_data = np.array(input_data).reshape(1, -1)  # Reshape for a single prediction
+
 
 if st.button("Predict Power Generated"):
     prediction = model.predict(input_data)
