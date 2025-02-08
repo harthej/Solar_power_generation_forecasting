@@ -66,6 +66,7 @@ input_data = user_input_features()
 if st.button("Predict Power Generated"):
     st.write(f"Input data shape: {input_data.shape}")
 
-    st.success(f"Predicted Power Generated: {prediction[0]:.2f} kW")
+    input_data = np.array([list(data.values())]).reshape(1, -1)
+
 
 st.write("Adjust the input values in the sidebar to see the predictions.")
