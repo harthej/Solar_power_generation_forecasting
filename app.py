@@ -58,6 +58,11 @@ def user_input_features():
     }
     return np.array([list(data.values())])
 
+import pickle
+
+with open("gradient_boosting_model.pkl", "rb") as f:
+    model = pickle.load(f, fix_imports=True, encoding="latin1")
+
 # Collect user input
 input_data = user_input_features()
 
