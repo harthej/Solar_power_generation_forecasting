@@ -68,13 +68,18 @@ input_data = user_input_features()
 
 input_data = np.array(input_data).reshape(1, -1)  # Reshape for a single prediction
 
-with open("gradient_boosting_model.pkl", "rb") as file:
-    model = pickle.load(file)
-    print(type(model))
+try:
+    url = "https://raw.githubusercontent.com/harthej/Solar_power_generation_forecasting/main/gradient_boosting_model.pkl"
+    response = requests.get(url)
+    if response.status_code == 200:
+        file = io.BytesIO(response.content)
+        model = pickle.load(file)
+        st.success("Model loaded successfully!")
+    else:
+        st.error(f"Failed to download the file. Status code: {response.status_code}")
+except Exception as e:
+    st.error(f"Error loading model: {e}")
+    
 
-
-if st.button("Predict Power Generated"):
-    prediction = model.predict(input_data)
-    st.success(f"Predicted Power Generated: {prediction[0]:.2f} kW")
 
 st.write("Adjust the input values in the sidebar to see the predictions.")
