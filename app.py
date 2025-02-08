@@ -14,7 +14,7 @@ response = requests.get(url)
 
 if response.status_code == 200:
     file = io.BytesIO(response.content)
-    with open("gradient_boosting_model.pkl", "rb") as file:
+    
     model = pickle.load(file)
 
     print("Model loaded successfully!")
