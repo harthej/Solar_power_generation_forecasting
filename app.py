@@ -63,10 +63,18 @@ def user_input_features():
 input_data = user_input_features()
 
 # Prediction
-if st.button("Predict Power Generated"):
-    st.write(f"Input data shape: {input_data.shape}")
+if model is None:
+    st.error("Model could not be loaded. Please check the source URL or format.")
+else:
+    if st.button("Predict Power Generated"):
+        try:
+            prediction = model.predict(input_data)
+            st.success(f"Predicted Power Generated: {prediction[0]:.2f} kW")
+        except Exception as e:
+            st.error(f"Error making prediction: {e}")
 
-    input_data = np.array([list(data.values())]).reshape(1, -1)
+
+
 
 
 st.write("Adjust the input values in the sidebar to see the predictions.")
