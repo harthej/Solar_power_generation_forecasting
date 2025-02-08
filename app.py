@@ -4,8 +4,8 @@ import numpy as np
 
 
 # Assuming you have a trained model
-with open("gradient_boosting_model.pkl", "wb") as file:
-    pickle.dump(model, file)
+with open("gradient_boosting_model.pkl", "rb") as file:
+    model = pickle.load(file)
 
 # Streamlit app
 st.title("Solar Power Prediction App")
