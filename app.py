@@ -1,26 +1,28 @@
 import streamlit as st
 import pickle
 import numpy as np
+import pandas as pd 
+from PIL import Image 
 
 
 # Assuming you have a trained model
 
 import requests
-import pickle
 import io
 
-url = "https://github.com/harthej/Solar_power_generation_forecasting/raw/67cdca0a2f102f5db313f1a1f90ab4bba23783f6/gradient_boosting_model.pkl"
+url = "https://raw.githubusercontent.com/harthej/Solar_power_generation_forecasting/main/gradient_boosting_model.pkl"
+
 response = requests.get(url)
 
 if response.status_code == 200:
-    file = io.BytesIO(response.content)
-    
-    model = pickle.load(file)
-
-    print("Model loaded successfully!")
+    try:
+        file = io.BytesIO(response.content)
+        model = pickle.load(file)
+        st.success("Model loaded successfully!")
+    except Exception as e:
+        st.error(f"Error loading model: {e}")
 else:
-    print("Failed to download the file. Status code:", response.status_code)
-
+    st.error(f"Failed to download the file. Status code: {response.status_code}")
 # Streamlit app
 st.title("Solar Power Prediction App")
 
