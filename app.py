@@ -63,6 +63,9 @@ def user_input_features():
 input_data = user_input_features()
 
 # Prediction
+if model is None:
+    st.error("Model is not loaded. Check if the model is being loaded correctly.")
+
 if st.button("Predict Power Generated"):
     prediction = model.predict(input_data)
     st.success(f"Predicted Power Generated: {prediction[0]:.2f} kW")
