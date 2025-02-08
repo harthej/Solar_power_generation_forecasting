@@ -1,3 +1,5 @@
+!pip install scikit-learn==1.3.0 --quiet
+
 import streamlit as st
 import pickle
 import numpy as np
@@ -12,6 +14,14 @@ from PIL import Image
 
 import requests
 import io
+
+try:
+      model = pickle.load(file)
+      st.success("Model loaded successfully!")
+   except ModuleNotFoundError:
+       st.error(f"Error loading model: Please install scikit-learn using '!pip install scikit-learn'")
+   except Exception as e:
+       st.error(f"Error loading model: {e}")
 
 url = "https://raw.githubusercontent.com/harthej/Solar_power_generation_forecasting/main/gradient_boosting_model.pkl"
 
