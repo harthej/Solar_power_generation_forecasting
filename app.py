@@ -1,8 +1,10 @@
 import streamlit as st
 import pickle
 import numpy as np
-import pandas as pd 
+import pandas as pd
+import sklearn
 from PIL import Image 
+
 
 
 # Assuming you have a trained model
