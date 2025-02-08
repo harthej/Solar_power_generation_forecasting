@@ -5,7 +5,7 @@ import numpy as np
 
 # Assuming you have a trained model
 
-pickle_in = open("C:\Users\hp\OneDrive\gradient_boosting_model.pkl", 'rb') 
+pickle_in = open(gradient_boosting_model.pkl, 'rb') 
 classifier = pickle.load(pickle_in) 
 
 # Streamlit app
