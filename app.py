@@ -5,8 +5,19 @@ import numpy as np
 
 # Assuming you have a trained model
 
-with open(https://github.com/harthej/Solar_power_generation_forecasting/blob/67cdca0a2f102f5db313f1a1f90ab4bba23783f6/gradient_boosting_model.pkl, 'rb') as file:
-    model = pickle.load(file)
+import requests
+import pickle
+import io
+
+url = "https://github.com/harthej/Solar_power_generation_forecasting/raw/67cdca0a2f102f5db313f1a1f90ab4bba23783f6/gradient_boosting_model.pkl"
+response = requests.get(url)
+
+if response.status_code == 200:
+    file = io.BytesIO(response.content)
+    model = pickle.load(file)  # Load the model
+    print("Model loaded successfully!")
+else:
+    print("Failed to download the file. Status code:", response.status_code)
 
 # Streamlit app
 st.title("Solar Power Prediction App")
