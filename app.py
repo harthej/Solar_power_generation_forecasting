@@ -62,7 +62,26 @@ def user_input_features():
 # Collect user input
 input_data = user_input_features()
 
-pip install scikit-learn pandas numpy streamlit
+
+import joblib
+
+# Load model only once
+@st.cache
+def load_model():
+    return joblib.load("model.pkl")
+
+model = load_model()
+
+# User input processing
+input_data = user_input_features()
+
+# Prediction on button click
+if st.button("Predict Power Generated"):
+    if model is not None:
+        prediction = model.predict(input_data)
+        st.success(f"Predicted Power Generated: {prediction[0]:.2f} kW")
+    else:
+        st.error("Model not found or not loaded properly!")
 
 # Prediction
 
