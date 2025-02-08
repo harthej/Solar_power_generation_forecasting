@@ -62,6 +62,8 @@ def user_input_features():
 # Collect user input
 input_data = user_input_features()
 
+pip install scikit-learn pandas numpy streamlit
+
 # Prediction
 
 input_data = np.array(input_data).reshape(1, -1)  # Reshape for a single prediction
